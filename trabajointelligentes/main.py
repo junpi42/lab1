@@ -1,7 +1,7 @@
 import json
 from clases import State,Action,Node
 
-with open(r'C:\Users\Juan\Desktop\UNI\intelligentes\Lab\Lab 1. space state search-20241002\pr1_SSII_English\problems\small\calle_agustina_aroca_albacete_250_0.json', 'r', encoding='utf-8') as file:
+with open(r'assets\problems\small\avenida_de_espanÌa_250_0.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 intersections =data['intersections']
