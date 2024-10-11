@@ -16,6 +16,10 @@ class State:
         self.latitude=latitude
         self.longitude=longitude
         self.identificador=identificador
+    def __str__(self):
+        return (f'state with id: {self.identificador}')
+
+        
 class Node:
     """
     esta es una clase padre que contiene las otras 2
