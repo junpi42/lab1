@@ -1,7 +1,7 @@
 import json
 from clases import State,Action,Node
 
-with open(r'assets\problems\small\avenida_de_espanÌa_250_0.json', 'r', encoding='utf-8') as file:
+with open(r'C:\\calle_agustina_aroca_albacete_250_0.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 intersections =data['intersections']
@@ -64,15 +64,17 @@ def recover_path(node:Node):
     path = []
 
     while node is not None:
-        path.append(node.estado.identificador)
-        node2=Node(states[node.parent],None,None) 
-        node= node2
-
+        path.append(node.estado.identificador)  
+        # Si node.parent es None, entonces hemos llegado al nodo raíz (el inicial)
+        if node.parent is None:
+            break
+        
+        node = Node(states[node.parent], None, node.parent)
     
     for i in path:
         print(i+" + ")
 
-    return None    
+    return path   
     
 
 def depth_first_search(initial_state, goal_state):
