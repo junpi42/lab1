@@ -60,21 +60,25 @@ def expand(current_state):
 
     return sucesores
         
-def recover_path(node:Node):
+def recover_path(node: Node):
     path = []
 
     while node is not None:
-        path.append(node.estado.identificador)  
+        path.append(node.estado.identificador)  # Añadir el identificador del estado actual
         # Si node.parent es None, entonces hemos llegado al nodo raíz (el inicial)
         if node.parent is None:
             break
-        
         node = Node(states[node.parent], None, node.parent)
-    
-    for i in path:
-        print(i+" + ")
 
-    return path   
+    # Imprimir el camino recorrido
+  
+    for estado in path:
+        print(f"{estado} + ")
+
+    # Imprimir el número total de estados
+    print(f"El número total de estados es: {len(path)}")
+    
+    return path 
     
 
 def depth_first_search(initial_state, goal_state):
