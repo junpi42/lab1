@@ -3,7 +3,7 @@ from clases import State,Action
 from dfs import DepthFirstSearch
 from bfs import BreadthFirstSearch
 
-with open(r'assets/problems/small/avenida_de_espanÌa_250_0.json', 'r', encoding='utf-8') as file:
+with open(r'trabajointelligentes\\assets\\problems\\small\\avenida_de_espanÌa_250_0.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 intersections =data['intersections']
@@ -69,10 +69,6 @@ goal_state = states[goal_id]
 dfs_instance = DepthFirstSearch(grafo, states) #creamos una instancia
 dfs_instance.search(initial_state, goal_state)
 
-initial_id = data['initial']
-goal_id = data['final']
-initial_state = states[initial_id]
-goal_state = states[goal_id]
 
 dbs_instance = BreadthFirstSearch(grafo, states) #creamos una instancia
 dbs_instance.search(initial_state, goal_state)
