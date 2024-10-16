@@ -26,7 +26,7 @@ class Node:
     """
     esta es una clase padre que contiene las otras 2
     """
-    def __init__(self,estado,action,parent,):
+    def __init__(self,estado,action,parent=None):
         self.estado=estado
         self.action=action
         self.parent=parent
