@@ -58,6 +58,7 @@ class DepthFirstSearch:
 
         while open_list:
             node = open_list.pop()
+            print(node.estado.identificador)
 
             if node.estado.identificador == goal_state.identificador:
                  self.recover_path(node)  # Devolver el camino si se encuentra la solución
