@@ -61,6 +61,7 @@ class DepthFirstSearch:
 
             if node.estado.identificador == goal_state.identificador:
                  self.recover_path(node)  # Devolver el camino si se encuentra la solución
+                 return None
                  
 
             explored.add(node.estado.identificador)
