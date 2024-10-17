@@ -55,10 +55,13 @@ class BreadthFirstSearch:
 
         while open_list:
             node = open_list.pop(0)
-            print(node.estado.identificador)
+            
 
             if node.estado.identificador == goal_state.identificador:
+
+                
                 self.recover_path(node)  # Devolver el camino si se encuentra la solución
+                print("\nExplored Nodes:"+str(len(explored)))
                 return None
 
             explored.add(node.estado.identificador)

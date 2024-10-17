@@ -25,6 +25,7 @@ class DepthFirstSearch:
                 sucesor = self.states[idSucesores]
                 sucesores.append(sucesor)
 
+        
         return sucesores
 
     def recover_path(self, node: Node):
@@ -41,13 +42,15 @@ class DepthFirstSearch:
             print(f"{i}: {estado}")
 
         # Imprimir el número total de estados
-        print(f"El número total de estados es: {len(path)}")
+        print(f"\nSolution length: {len(path)}")
         self.NodesDictionary.clear()#vaciamos el diccionario por si el programa no para de ejecutarse y buscamos otra cosa
         return path
 
     def search(self, initial_state, goal_state):
         
         open_list = []
+        ContadorExpandidos= 0
+        ContadoTotal=0
         
         # Crear el nodo inicial y almacenarlo en el diccionario
         initial_node = Node(initial_state, None, None)
@@ -57,16 +60,22 @@ class DepthFirstSearch:
         explored = set()
 
         while open_list:
+            
             node = open_list.pop()
-            print(node.estado.identificador)
+            
 
             if node.estado.identificador == goal_state.identificador:
+                 ContadoTotal=ContadoTotal+ len(open_list)+ContadorExpandidos
                  self.recover_path(node)  # Devolver el camino si se encuentra la solución
+                 print("Generate Nodes:" +str(ContadoTotal))
+                 print("Expanded Nodes:"+str(ContadorExpandidos))
+                 
                  return None
                  
 
             explored.add(node.estado.identificador)
             successors = self.expand(node.estado)
+            ContadorExpandidos=ContadorExpandidos+len(successors)
 
             for successor in successors:
                 if successor.identificador not in explored:
