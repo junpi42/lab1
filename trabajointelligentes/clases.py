@@ -17,6 +17,8 @@ class Action:
     def __str__(self):
         return f"\nOrigin:  + {self.origin} + \nDestiny:  + {self.destination} + \nCost:  + {self.distance}"
 
+    def time(self):
+        return self.distance/self.velocity
 
 class State:
     """
@@ -40,10 +42,11 @@ class Node:
     Esta es una clase padre que contiene las otras 2
     """
 
-    def __init__(self, estado, action, parent=None):
+    def __init__(self, estado, action, parent=None, cost=0, time=0):
         self.estado = estado
         self.action = action
         self.parent = parent
+        self.cost = cost + time
 
     def __eq__(self, id2):
         if isinstance(id2, Node):
@@ -56,4 +59,3 @@ class Node:
 
     def __str__(self):
         return f"\nOrigin:  + {self.action} + \nDestiny:  + {self.parent} + \nCost:  + {self.action}"
-

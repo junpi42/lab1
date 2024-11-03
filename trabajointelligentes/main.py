@@ -1,14 +1,14 @@
 from trabajointelligentes.BestFirst import BestFirst
-from trabajointelligentes.BreadthFirst import BreadthFirst
 from trabajointelligentes.DepthFirst import DepthFirst
 from trabajointelligentes.Problem import Problem
+from trabajointelligentes.assets.AStar import AStar
 
 #------------------------------------------------------------------------------------------------
 #ALGORITMO DE BUSQUEDA DEPTH-FIRST
 #------------------------------------------------------------------------------------------------
 
 
-problem = Problem("assets/problems/small/avenida_de_espanÌa_250_0.json")
+problem = Problem("assets/problems/calle_agustina_aroca_albacete_5000_0.json")
 
 # depthFirst = DepthFirst(problem)
 # depthFirst.do_search()
@@ -24,5 +24,5 @@ problem = Problem("assets/problems/small/avenida_de_espanÌa_250_0.json")
 #ALGORITMO DE BUSQUEDA BEST-FIRST
 #------------------------------------------------------------------------------------------------
 
-bestFirst = BestFirst(problem)
+bestFirst = AStar(problem)
 bestFirst.do_search()

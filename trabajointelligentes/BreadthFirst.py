@@ -5,6 +5,7 @@ class BreadthFirst(Search):
     def __init__(self, problem):
         Search.__init__(self, problem)
         self.openNodes = []
+        self.open_list = []
 
     def insert_node(self, new_node, node_list):
         node_list.append(new_node)

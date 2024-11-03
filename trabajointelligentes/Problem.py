@@ -38,7 +38,6 @@ class Problem:
             action = Action(id_origen, id_destino, distance, velocity)
 
             self.actions[(id_origen, id_destino)] = action
-
         # Creación del diccionario para guardar los posibles movimientos desde un punto
 
         self.grafo = {}
@@ -51,6 +50,9 @@ class Problem:
             else:
                 # Si no está, lo inicializamos con una lista que contiene el destino
                 self.grafo[id_origen] = [id_destino]
+
+        for value in self.grafo.keys():
+            self.grafo[value].sort()
 
     def is_final(self, p_state):
         return self.final_state == p_state

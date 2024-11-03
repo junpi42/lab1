@@ -1,4 +1,6 @@
-from trabajointelligentes.Heuristic import Heuristic, calculate_distance
+from geopy.distance import geodesic
+
+from trabajointelligentes.Heuristic import Heuristic
 
 
 class OptimisticHeuristic(Heuristic):
@@ -6,7 +8,11 @@ class OptimisticHeuristic(Heuristic):
         self.problem = problem
 
     def g(self, node):
-        return calculate_distance(self.problem.final_state, node.estado)
+        ini_lat = node.estado.latitude
+        ini_lon = node.estado.longitude
+        ini = (ini_lat, ini_lon)
+
+        return geodesic(ini, (self.problem.final_state.latitude, self.problem.final_state.longitude)).km
 
     def h(self, node):
-        return calculate_distance(self.problem.initial_state, node.estado)
+        return node.cost

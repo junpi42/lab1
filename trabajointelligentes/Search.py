@@ -6,7 +6,7 @@ from trabajointelligentes.clases import Action, Node
 class Search(ABC):
     def __init__(self, problem):
         self.problem = problem
-        self.open_list = []
+        self.open_list = None
         self.explored = set()
         self.cost = 0
         self.NodesDictionary = {}
@@ -20,7 +20,7 @@ class Search(ABC):
         pass
 
     @abstractmethod
-    def is_empty(self, node_list):
+    def is_empty(self):
         pass
 
     def expand(self, current_state):
@@ -39,7 +39,7 @@ class Search(ABC):
         self.NodesDictionary[self.problem.initial_state] = initial_node
         self.insert_node(initial_node, self.open_list)
 
-        while self.open_list:
+        while not self.is_empty():
             node = self.extract_node(self.open_list)
             if self.problem.is_final(node.estado):
                 path = self.recover_path(node)  # Devolver el camino si se encuentra la solución
@@ -50,10 +50,11 @@ class Search(ABC):
 
             for successor in successors:
                 if successor.identificador not in self.explored:
-                    new_action = Action(node.estado.identificador, successor.identificador, None, None)
+                    new_action = self.problem.actions[(node.estado.identificador, successor.identificador)]
+#                    new_action = Action(node.estado.identificador, successor.identificador, None, None)
 
                     if successor.identificador not in self.NodesDictionary:
-                        new_node = Node(successor, new_action, node)
+                        new_node = Node(successor, new_action, node, node.cost, new_action.time())
                         self.NodesDictionary[successor.identificador] = new_node
                     else:
                         new_node = self.NodesDictionary[successor.identificador]
@@ -63,9 +64,7 @@ class Search(ABC):
         print("No solution found")
 
     def recover_path(self, node: Node):
-
         path = []
-
         while node is not None:
             path.append(node.estado)  # Añadir el identificador del estado actual
             node = node.parent  # Moverse al nodo padre
