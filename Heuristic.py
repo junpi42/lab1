@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 from math import radians, sin, cos, sqrt, atan2
 
-from trabajointelligentes.clases import State
+from clases import State
 
 
 def calculate_distance(state_a: State, state_b: State):

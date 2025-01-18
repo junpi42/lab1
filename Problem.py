@@ -1,6 +1,6 @@
 import json
 
-from trabajointelligentes.clases import Action, State
+from clases import Action, State
 
 
 class Problem:

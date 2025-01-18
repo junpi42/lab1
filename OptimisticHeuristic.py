@@ -1,4 +1,4 @@
-from trabajointelligentes.Heuristic import Heuristic, calculate_distance
+from Heuristic import Heuristic, calculate_distance
 
 
 class OptimisticHeuristic(Heuristic):

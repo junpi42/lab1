@@ -1,10 +1,10 @@
-from trabajointelligentes.Search import Search
+from Search import Search
 
 
-class DepthFirst(Search):
-    def __init__(self, problem):
+class DepthLimitedSearch(Search):
+    def __init__(self, problem, depth_limit):
         Search.__init__(self, problem)
-        self.openNodes = []
+        self.depth_limit = depth_limit  #Definimos la profundidad que queremos
 
     def insert_node(self, new_node, node_list):
         node_list.append(new_node)

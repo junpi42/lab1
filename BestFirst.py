@@ -1,7 +1,7 @@
 from asyncio import PriorityQueue
 
-from trabajointelligentes.OptimisticHeuristic import OptimisticHeuristic
-from trabajointelligentes.Search import Search
+from OptimisticHeuristic import OptimisticHeuristic
+from Search import Search
 
 
 class BestFirst(Search):

@@ -1,12 +1,12 @@
-from trabajointelligentes.Search import Search
+from Search import Search
 
 
-class BreadthFirst(Search):
+class InteractiveSearch(Search):
     def __init__(self, problem):
         Search.__init__(self, problem)
         self.openNodes = []
 
-    def insert_node(self, new_node, node_list):
+    def insert_node(self, new_node, node_list): 
         node_list.append(new_node)
 
     def extract_node(self, node_list):
